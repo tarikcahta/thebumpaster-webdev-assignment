@@ -1,6 +1,68 @@
 'use client';
-import { HomePage } from './pages/HomePage';
+import axios from 'axios';
+import { Header } from './components/Header';
+import Users from './components/Users';
+import { useState, useEffect } from 'react';
+
+type Geo = {
+  lat: string;
+  lng: string;
+};
+
+type Address = {
+  street: string;
+  suite: string;
+  city: string;
+  zipcode: string;
+  geo: Geo;
+};
+
+type Company = {
+  name: string;
+  catchPhrase: string;
+  bs: string;
+};
+
+export type User = {
+  id: number;
+  name: string;
+  username: string;
+  email: string;
+  address: Address;
+  phone: string;
+  website: string;
+  company: Company;
+};
 
 export default function Home() {
-  return <HomePage />;
+  const [users, setUsers] = useState<Array<User>>([]);
+
+  useEffect(() => {
+    getUsers().then((data) => {
+      setUsers(data);
+    });
+  }, []);
+
+  console.log('These are the users ---', users);
+  return (
+    <div className="min-h-screen max-w-screen flex flex-col justify-between items-center ">
+      <Header />
+      <div className="w-[80%]">
+        <Users users={users} />
+      </div>
+    </div>
+  );
 }
+
+export const getUsers = async () => {
+  const response = await axios.get(
+    'https://jsonplaceholder.typicode.com/users',
+    {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+  );
+  console.log(response);
+  return response.data as Array<User>;
+};
