@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Header } from './components/Header';
 import Users from './components/Users';
 import { useState, useEffect } from 'react';
+import PageFooter from './components/PageFooter';
 
 type Geo = {
   lat: string;
@@ -43,13 +44,13 @@ export default function Home() {
     });
   }, []);
 
-  console.log('These are the users ---', users);
   return (
-    <div className="min-h-screen max-w-screen flex flex-col justify-between items-center ">
+    <div className="min-h-screen max-w-screen bg-slate-600 flex flex-col justify-between items-center ">
       <Header />
       <div className="w-[80%]">
         <Users users={users} />
       </div>
+      <PageFooter />
     </div>
   );
 }
