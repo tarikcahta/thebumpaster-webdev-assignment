@@ -1,4 +1,4 @@
-import { User } from '../page';
+import { User } from '../requests';
 import { SingleUser } from './User';
 
 type UsersProps = {
