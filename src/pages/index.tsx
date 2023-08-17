@@ -4,7 +4,7 @@ import PageFooter from '@/app/components/PageFooter';
 import Users from '@/app/components/Users';
 import { useState, useEffect } from 'react';
 import { getUsers, User } from '@/app/requests';
-import '../styles/globals.css'
+import '../styles/globals.css';
 
 export default function Home() {
   const [users, setUsers] = useState<Array<User>>([]);

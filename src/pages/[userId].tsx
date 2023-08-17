@@ -24,7 +24,7 @@ const UserPosts = () => {
 
   return (
     <div className="min-h-screen max-w-screen bg-slate-600 flex flex-col justify-between items-center">
-      <Header />
+      <Header home="Home" todos="To Dos" about="About" />
       <div className="w-[80%]">
         <Posts posts={userPosts} />
       </div>

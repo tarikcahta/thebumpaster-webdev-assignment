@@ -1,8 +1,15 @@
 import { useState } from 'react';
 import { Navbar, Button } from 'flowbite-react';
+import Link from 'next/link';
 
-export const Header = () => {
-  const [activeLink, setActiveLink] = useState<number>(0);
+type HeaderProps = {
+  home?: string;
+  todos?: string;
+  about?: string;
+};
+
+export const Header = ({ home, todos, about }: HeaderProps) => {
+  const [activeLink, setActiveLink] = useState<number>();
 
   const handleLinkClick = (index: number) => {
     setActiveLink(index);
@@ -17,34 +24,43 @@ export const Header = () => {
             src="/favicon.svg"
           /> */}
         <span className="self-center whitespace-nowrap text-xl font-semibold text-black dark:text-white">
-          Flowbite React
+          Web Dev Assignment
         </span>
       </Navbar.Brand>
-      <div className="flex md:order-2">
+      {/* <div className="flex md:order-2">
         <Button className="bg-green-600">Get started</Button>
         <Navbar.Toggle />
-      </div>
+      </div> */}
       <Navbar.Collapse>
         <Navbar.Link
           active={activeLink === 0}
           onClick={() => handleLinkClick(0)}
-          href="#"
         >
-          <p>Home</p>
+          {home && (
+            <Link href={'/'}>
+              <p>{home}</p>
+            </Link>
+          )}
         </Navbar.Link>
         <Navbar.Link
           active={activeLink === 1}
           onClick={() => handleLinkClick(1)}
-          href="#"
         >
-          <p>To Dos</p>
+          {todos && (
+            <Link href={'/todos'}>
+              <p>{todos}</p>
+            </Link>
+          )}
         </Navbar.Link>
         <Navbar.Link
           active={activeLink === 2}
           onClick={() => handleLinkClick(2)}
-          href="#"
         >
-          <p>About</p>
+          {about && (
+            <Link href={'/about'}>
+              <p>{about}</p>
+            </Link>
+          )}
         </Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
