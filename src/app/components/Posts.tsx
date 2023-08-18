@@ -1,4 +1,5 @@
-// import { useRouter } from 'next/router';
+import Link from 'next/link';
+
 import { Post } from '../requests';
 import { SinglePost } from './Post';
 
@@ -12,10 +13,15 @@ export const Posts = ({ posts }: PostsProps) => {
 
   console.log('Posts prop in Posts:', posts);
   return (
-    <div className="grid sm:grid-cols-4 grid-cols-1 gap-4 mt-12 mb-12">
-      {posts.map((post) => (
-        <SinglePost key={post.id} post={post} />
-      ))}
+    <div>
+      <div className="mt-10 hover:text-green-600 hover:underline">
+        <Link href="/">Back to Users</Link>
+      </div>
+      <div className="grid sm:grid-cols-4 grid-cols-1 gap-4 mt-12 mb-12">
+        {posts.map((post) => (
+          <SinglePost key={post.id} post={post} />
+        ))}
+      </div>
     </div>
   );
 };
