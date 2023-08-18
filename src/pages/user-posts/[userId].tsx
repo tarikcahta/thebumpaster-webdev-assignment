@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { getPosts, Post } from '../app/requests';
-import { Posts } from '../app/components/Posts';
+import { getPosts, Post } from '../../app/requests';
+import { Posts } from '../../app/components/Posts';
 import { Header } from '@/app/components/Header';
 import PageFooter from '@/app/components/PageFooter';
 
