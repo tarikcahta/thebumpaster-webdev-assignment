@@ -15,22 +15,20 @@ export const Header = ({ home, todos, about }: HeaderProps) => {
     setActiveLink(index);
   };
 
+  const hasOptions = home || todos || about;
+
   return (
     <Navbar className="w-full bg-slate-300" fluid>
       <Navbar.Brand href="https://flowbite-react.com">
-        {/* <img
-            alt="Flowbite React Logo"
-            className="mr-3 h-6 sm:h-9"
-            src="/favicon.svg"
-          /> */}
         <span className="self-center whitespace-nowrap text-xl font-semibold text-black dark:text-white">
           Web Dev Assignment
         </span>
       </Navbar.Brand>
-      {/* <div className="flex md:order-2">
-        <Button className="bg-green-600">Get started</Button>
-        <Navbar.Toggle />
-      </div> */}
+      {hasOptions && (
+        <div className="flex md:order-2">
+          <Navbar.Toggle />
+        </div>
+      )}
       <Navbar.Collapse>
         <Navbar.Link
           active={activeLink === 0}
